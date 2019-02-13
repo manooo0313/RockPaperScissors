@@ -1,0 +1,1 @@
+alert("this js file linked properly");
