@@ -25,10 +25,11 @@ function playerPlay() {
             return selection;
         } else {
             alert(`"${selection}" is not a valid choice, please re-enter: Rock, Paper or Scissors`);
-            return playerPlay();
+            return;
         }
     }
 }
+
 
 // Rock:    - beat Scissors
 //          - tie Rock -> playerSelection === computerSelection
@@ -45,15 +46,18 @@ function playRound(playerSelection, computerSelection){
     playerSelection = playerPlay();
     computerSelection = computerPlay();
     if (playerSelection === computerSelection){
-        return "Tie, " + playerSelection + " is equal with " + computerSelection + "!";
+        console.log("Tie, " + playerSelection + " is equal with " + computerSelection + "!");
+        //return "Tie, " + playerSelection + " is equal with " + computerSelection + "!";
     } else if (playerSelection === "Rock" && computerSelection === "Scissors" || playerSelection === "Paper" && computerSelection === "Rock" || playerSelection === "Scissors" && computerSelection === "Paper"){
         playerScore ++;
+        console.log("You win, " + playerSelection + " beat " + computerSelection + "!");
         console.log("Player Score is: " + playerScore);
-        return "You win, " + playerSelection + " beat " + computerSelection + "!";
-    } else {
+        //return "You win, " + playerSelection + " beat " + computerSelection + "!";
+    } else if (playerSelection === "Rock" && computerSelection === "Paper" || playerSelection === "Paper" && computerSelection === "Scissors" || playerSelection === "Scissors" && computerSelection === "Rock") {
         computerScore ++;
+        console.log("Computer win, " + computerSelection + " beat " + playerSelection + "!");
         console.log("Computer Score is: " + computerScore);
-        return "Computer win, " + computerSelection + " beat " + playerSelection + "!";
+        //return "Computer win, " + computerSelection + " beat " + playerSelection + "!";
     }
 }
 
@@ -72,7 +76,7 @@ function game() {
     }
 }
 
- function gameOver(){
+function gameOver(){
     playerScore = 0;
     computerScore = 0;
 } 
